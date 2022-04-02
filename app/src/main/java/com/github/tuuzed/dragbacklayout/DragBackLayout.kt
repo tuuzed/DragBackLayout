@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.annotation.IntDef
 import androidx.customview.widget.ViewDragHelper
-import androidx.lifecycle.LifecycleObserver
 import kotlin.math.absoluteValue
 import kotlin.math.max
 
