@@ -51,7 +51,7 @@ import kotlin.math.max
  */
 class DragBackLayout @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr), LifecycleObserver {
+) : FrameLayout(context, attrs, defStyleAttr) {
 
     companion object {
         const val DRAG_BEGIN = 1
@@ -112,12 +112,12 @@ class DragBackLayout @JvmOverloads constructor(
             if (!beginDrag && top < 0) {
                 return 0
             }
-            ratio = (originHeight - top.absoluteValue) / originHeight.toFloat()
-            val dim = ratio * 255
             if (!beginDrag && top > originHeight / 10) {
                 callback?.onDrag(DRAG_BEGIN)
                 beginDrag = true
             }
+            ratio = (originHeight - top.absoluteValue) / originHeight.toFloat()
+            val dim = ratio * 255
             setBackgroundColor(Color.argb(dim.toInt(), 0, 0, 0))
             child.animate().scaleX(ratio).scaleY(ratio).setDuration(0).start()
             return max(top, 0)
